@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>LogsByIP</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Up to 500 Most RecentLogs for IP <strong th:text="${searchIP}"/></h2>
+    <div style="overflow-x:auto;transform: rotateX(180deg)">
+        <table class="table table-striped" style="overflow-x:scroll;transform: rotateX(180deg)">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">ID for Updates</th>
+                <th scope="col">#</th>
+                <th scope="col">Date and Time</th>
+                <th scope="col">SourceIp</th>
+                <th scope="col">DestinationIp</th>
+                <th scope="col">Log Type</th>
+                <th scope="col">Specific Type</th>
+                <th scope="col">BlockID</th>
+                <th scope="col">Block Size</th>
+                <th scope="col">User Name</th>
+                <th scope="col">UserId</th>
+                <th scope="col">HTTP Status</th>
+                <th scope="col">HTTP Response Size</th>
+                <th scope="col">Referers</th>
+                <th scope="col">Resources</th>
+                <th scope="col">Agent</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr th:each="ip, iStat : ${searchip}" th:unless="${iStat.index > 499}">
+                <td><strong th:text="${ip[0]}"></strong></td>
+                <td th:text="${iStat.count}"></td>
+                <td th:text="${ip[4]}"></td>
+                <td th:text="${ip[5]}"></td>
+                <td th:text="${ip[1]}"></td>
+                <td th:text="${ip[6]}"></td>
+                <td th:text="${ip[7]}"></td>
+                <td th:text="${ip[8]}"></td>
+                <td th:text="${ip[2]}"></td>
+                <td th:text="${ip[11]}"></td>
+                <td th:text="${ip[12]}"></td>
+                <td th:text="${ip[13]}"></td>
+                <td th:text="${ip[14]}"></td>
+                <td th:text="${ip[15]}"></td>
+                <td th:text="${ip[16]}"></td>
+                <td th:text="${ip[17]}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

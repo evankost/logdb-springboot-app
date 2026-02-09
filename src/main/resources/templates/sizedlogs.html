@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>SizedLogs</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Up to 100 Longest AccessLogs with Max Size <strong th:text="${size}"/> </h2>
+    <div style="overflow-x:auto;transform: rotateX(180deg)">
+        <table class="table table-striped" style="overflow-x:scroll;transform: rotateX(180deg)">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Date and Time</th>
+                <th scope="col">SourceIp</th>
+                <th scope="col">Protocol</th>
+                <th scope="col">Method</th>
+                <th scope="col">UserName</th>
+                <th scope="col">UserID</th>
+                <th scope="col">HTTP Status</th>
+                <th scope="col">Response Size</th>
+                <th scope="col">Referers</th>
+                <th scope="col">Resources</th>
+                <th scope="col">Agent</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr th:each="sizedlog, iStat : ${sizedlogs}" th:unless="${iStat.index > 99}">
+                <td th:text="${sizedlog[1]}"></td>
+                <td th:text="${sizedlog[2]}"></td>
+                <td th:text="${sizedlog[3]}"></td>
+                <td th:text="${sizedlog[4]}"></td>
+                <td th:text="${sizedlog[5]}"></td>
+                <td th:text="${sizedlog[6]}"></td>
+                <td th:text="${sizedlog[7]}"></td>
+                <td th:text="${sizedlog[8]}"></td>
+                <td th:text="${sizedlog[9]}"></td>
+                <td th:text="${sizedlog[10]}"></td>
+                <td th:text="${sizedlog[11]}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>LogsType</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Search Most Common Source IP of a Specific Day</h2>
+    <form action="/ipcount" method="post">
+        <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" name="date" class="form-control" id="date" placeholder="date">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+</section>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>LogsType</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Select Dates to Find Logs of a Specific Type</h2>
+    <form action="/logcount" method="post">
+        <div class="form-group">
+            <select class="form-select" type="text" name="type"  id="type" placeholder="type">
+                <option selected>Select Type</option>
+                <option value="replicate">replicate</option>
+                <option value="remove">remove</option>
+                <option value="receiving">receiving</option>
+                <option value="received">received</option>
+                <option value="served">served</option>
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+                <option value="PUT">PUT</option>
+                <option value="CONNECT">CONNECT</option>
+                <option value="HEAD">HEAD</option>
+                <option value="OPTIONS">OPTIONS</option>
+                <option value="SEARCH">SEARCH</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Start Date</label>
+            <input type="datetime-local" name="date_one" class="form-control" id="date_one" placeholder="date_one">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>End Date</label>
+            <input type="datetime-local" class="form-control" name="date_two" id="date_two" placeholder="date_two">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+</section>
+</body>
+</html>

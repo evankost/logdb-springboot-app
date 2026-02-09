@@ -1,0 +1,57 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  datasource:
+    password: ${POSTGRES_PWD}
+    url: jdbc:postgresql://localhost:5432/ThirdLogDB
+    username: ${POSTGRES_USR}
+    hikari:
+        maximum-pool-size: 10
+    dbcp2:
+      test-while-idle: true
+      validation-query: select 1
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      naming: 
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+    properties:
+
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  mail:
+    host: 192.168.1.243
+    port: 1025
+    username: hello
+    password: hello
+
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+
+logging:
+  level:
+    org.springframework.web.servlet.handler.HandlerMappingIntrospector: INFO
+    
+application:
+  security:
+    jwt:
+      secret-key: 45A3BC7890DEF2156789ABCD32456F8723456789012345678901234567890123
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days

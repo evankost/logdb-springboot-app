@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>UpdateAccessLog</title>
+    <script  th:inline="javascript">
+        function required()
+        {
+            var emptt = document.forms["form"]["time_date"].value;
+            var empts = document.forms["form"]["source_ip"].value;
+            var emptl = document.forms["form"]["log_type"].value;
+            var emptp = document.forms["form"]["specific_type"].value;
+            var emptb = document.forms["form"]["username"].value;
+            var empth = document.forms["form"]["http_status"].value;
+            var emptr = document.forms["form"]["response_size"].value;
+            var emptrs = document.forms["form"]["referers"].value;
+            var emptrc = document.forms["form"]["resources"].value;
+            var emptza = document.forms["form"]["agents"].value;
+
+            if (emptt == "" || empts == "" || emptl == "" || emptp == "" || emptb == ""  || empth == "" || emptr == ""  || emptrs == ""  || emptrc == "" || emptza == "")
+            {
+                alert("Please Provide Correct Input Values");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    </script>
+
+</head>
+<body>
+<section layout:fragment="content">
+    <br>
+    <h1>Update Current Values of Log with Id <strong th:text="${result[0][0]}"></strong> </h1><br>
+    <form action="/updateweblog" method="post" name="form">
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="log_id" id="log_id" th:value=${log_id}>
+        </div>
+        <div class="form-group">
+            <label for="time_date">Date and Time (Current Value:  <strong th:text="${result[0][1]}"/>)</label>
+            <input type="datetime-local" class="form-control" name="time_date" id="time_date" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="source_ip">Source Ip (Current Value:  <strong th:text="${result[0][2]}"/>)</label>
+            <input type="text" class="form-control" name="source_ip" id="source_ip" placeholder="0.0.0.0 - 255.255.255.255" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$">
+        </div>
+        <div class="form-group">
+            <label for="log_type">Protocol (Current Value:  <strong th:text="${result[0][3]}"/>)</label>
+            <select class="form-select" type="text" name="log_type"  id="log_type" placeholder="" >
+                <option value="" selected>Select Protocol</option>
+                <option value="HTTP">HTTP</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="specific_type">Method (Current Value:  <strong th:text="${result[0][4]}"/>)</label>
+            <select class="form-select" type="text" name="specific_type"  id="specific_type" placeholder="">
+                <option selected>Select Method</option>
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+                <option value="PUT">PUT</option>
+                <option value="CONNECT">CONNECT</option>
+                <option value="HEAD">HEAD</option>
+                <option value="OPTIONS">OPTIONS</option>
+                <option value="SEARCH">SEARCH</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="username">Username (Current Value:  <strong th:text="${result[0][7]}"/>)</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="" maxlength="15">
+        </div>
+        <div class="form-group">
+            <label for="user_id">User Id (Current Value:  <strong th:text="${result[0][8]}"/>)</label>
+            <input type="text" class="form-control" name="user_id" id="user_id" placeholder="" maxlength="15">
+        </div>
+        <div class="form-group">
+            <label for="http_status">Http Status  (Current Value:  <strong th:text="${result[0][9]}"/>)</label>
+            <input type="number" class="form-control" name="http_status" id="http_status" placeholder="" maxlength="3"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+        </div>
+        <div class="form-group">
+            <label for="response_size">Response Size (Current Value:  <strong th:text="${result[0][10]}"/>)</label>
+            <input type="number" class="form-control" name="response_size" id="response_size" placeholder="" maxlength="5"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+        </div>
+        <div class="form-group">
+            <label for="referers">Referers (Current Value:  <strong th:text="${result[0][11]}"/>)</label>
+            <input type="text" class="form-control" name="referers" id="referers" placeholder="" maxlength="140">
+        </div>
+        <div class="form-group">
+            <label for="resources">Resources (Current Value:  <strong th:text="${result[0][12]}"/>)</label>
+            <input type="text" class="form-control" name="resources" id="resources" placeholder="" maxlength="140">
+        </div>
+        <div class="form-group">
+            <label for="agents">Agents (Current Value:  <strong th:text="${result[0][13]}"/>)</label>
+            <input type="text" class="form-control" name="agents" id="agents" placeholder="" maxlength="40">
+        </div>
+        <br>
+        <button type="submit"  class="btn btn-secondary" th:onclick="return required()">Update</button>
+        <br><br><br>
+    </form>
+</section>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>DayReplicatedServed</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">BlockIds that Were Replicated and Served the same Day</h2>
+    <div style="overflow-x:auto;">
+        <table class="table table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">blockid</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="block, iStat : ${dreplicatedserved}">
+                <td th:text="${iStat.count}"></td>
+                <td th:text="${block}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

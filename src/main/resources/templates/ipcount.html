@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>Type Log Count</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Most Common IP for Day <strong th:text="${date}"/> </h2>
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">source ip</th>
+            <th scope="col">count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ipcount : ${ipperday}">
+            <td th:text="${ipcount[0]}"></td>
+            <td th:text="${ipcount[1]}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>Type Log Count</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Top 5 Blocks per Day from <strong th:text="${date_one}"/> to  <strong th:text="${date_two}"/></h2>
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">block</th>
+            <th scope="col">count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="blockcount : ${blockperday}">
+            <td th:text="${blockcount[0]}"></td>
+            <td th:text="${blockcount[1]}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>InsertLogHDFS</title>
+    <script  th:inline="javascript">
+        function required()
+        {
+            var emptt = document.forms["form"]["time_date"].value;
+            var empts = document.forms["form"]["source_ip"].value;
+            var emptl = document.forms["form"]["log_type"].value;
+            var emptp = document.forms["form"]["specific_type"].value;
+            var emptb = document.forms["form"]["blockid"].value;
+            var emptd = document.forms["form"]["destination_ip"].value;
+            var emptz = document.forms["form"]["size"].value;
+
+            if (emptt == "" || empts == "" || emptl == "" || emptp == "" || emptb == ""  || emptz == "" || emptd == "")
+            {
+                alert("Please Provide Correct Input Values");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    </script>
+
+</head>
+<body>
+<section layout:fragment="content">
+    <br>
+    <h1>Update Current Values of Log with Id <strong th:text="${result[0][0]}"></strong> </h1><br>
+    <form action="/updatehdfslog" method="post" name="form">
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="log_id" id="log_id" th:value=${log_id}>
+        </div>
+        <div class="form-group">
+            <label  for="time_date">Date and Time (Current Value:  <strong th:text="${result[0][1]}"/>)</label>
+            <input type="datetime-local" class="form-control" name="time_date" id="time_date">
+        </div>
+        <div class="form-group">
+            <label for="source_ip">Source Ip: (Current Value:  <strong th:text="${result[0][2]}"/>)</label>
+            <input type="text" class="form-control" name="source_ip" id="source_ip" placeholder="0.0.0.0 - 255.255.255.255" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$">
+        </div>
+        <div class="form-group">
+            <label for="log_type">HDFS Type: (Current Value:  <strong th:text="${result[0][3]}"/>)</label>
+            <select class="form-select" type="text" name="log_type"  id="log_type" placeholder="">
+                <option value="" selected>HDFS Type</option>
+                <option value="HDFS XCeiver">HDFS XCeiver</option>
+                <option value="HDFS Namesystem">HDFS Namesystem</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="specific_type">HDFS Specific Type: (Current Value:  <strong th:text="${result[0][4]}"/>)</label>
+            <select class="form-select" type="text" name="specific_type"  id="specific_type" placeholder="specific_type">
+                <option selected>Select Type</option>
+                <option value="replicate">replicate</option>
+                <option value="remove">remove</option>
+                <option value="receiving">receiving</option>
+                <option value="received">received</option>
+                <option value="served">served</option>
+            </select>
+            <div class="form-group">
+                <label for="blockid">BlockId: : (Current Value:  <strong th:text="${result[0][5]}"/>)</label>
+                <input type="number" class="form-control" name="blockid" id="blockid" placeholder="" maxlength="20"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+            </div>
+            <div class="form-group">
+                <label for="destination_ip">Destination IP : (Current Value:  <strong th:text="${result[0][6]}"/>)</label>
+                <input type="text" class="form-control" name="destination_ip" id="destination_ip" placeholder="0.0.0.0 - 255.255.255.255 (Up to 3 IPs comma Separated)"
+                       pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$|^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5]),((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$|^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5]),((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5]),((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"
+                       maxlength="50">
+            </div>
+            <div class="form-group">
+                <label for="size">Size: (Current Value:  <strong th:text="${result[0][7]}"/>)</label>
+                <input type="number" class="form-control" name="size" id="size" placeholder="" maxlength="10"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+            </div>
+            <br>
+            <button type="Submit" class="btn btn-secondary" th:onclick="return required()">Update</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>FindLogs</title>
+    <script  th:inline="javascript">
+        function required()
+        {
+            var emptf = document.forms["form"]["searchIP"].value
+
+            if (emptf == "")
+            {
+                alert("Please Provide Correct Input Values");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Find Logs for a Specific IP as Source or Destination</h2>
+    <form action="/logsbyip" method="post" name="form">
+        <div class="form-group">
+            <label>Search IP</label>
+            <input type="text" name="searchIP" class="form-control" id="searchIP" placeholder="0.0.0.0 - 255.255.255.255" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary" th:onclick="return required()">Submit</button>
+    </form>
+</section>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>UpdateLogs</title>
+    <script  th:inline="javascript">
+        function required()
+        {
+            var emptf = document.forms["form"]["LogId"].value
+
+            if (emptf == "")
+            {
+                alert("Please Provide Correct Input Values");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Provide Log ID for Update</h2>
+    <p th:text="${result}" style="padding:5px"></p>
+    <form action="/modifylog" method="post" name="form">
+        <div class="form-group">
+            <label>Log ID</label>
+            <input type="number" name="LogId" class="form-control" id="LogId" placeholder="">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary" th:onclick="return required()">Submit</button>
+    </form>
+</section>
+</body>
+</html>

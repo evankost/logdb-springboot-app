@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>Type Count</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Count of Types from <strong th:text="${date_one}"/> to <strong th:text="${date_two}"/> </h2>
+    <div style="overflow-x:auto;">
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">type</th>
+            <th scope="col">count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="logscount : ${logspertype}">
+            <td th:text="${logscount[0]}"></td>
+            <td th:text="${logscount[1]}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+    </div>
+</section>
+</body>
+</html>

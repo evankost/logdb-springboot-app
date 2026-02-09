@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/register_layout}">
+<head>
+    <title>Register</title>
+    <script  th:inline="javascript">
+        function required()
+        {
+            var emptf = document.forms["form"]["firstName"].value;
+            var emptl = document.forms["form"]["lastName"].value;
+            var emptu = document.forms["form"]["userName"].value;
+            var emptp = document.forms["form"]["password"].value;
+            var empte = document.forms["form"]["email"].value;
+            var emptr = document.forms["form"]["role"].value;
+
+            if (emptf == "" || emptl == "" || emptu == "" || emptp == "" || empte == "" || emptr == "")
+            {
+                alert("Please Provide Correct Input Values");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    </script>
+
+</head>
+<body>
+<section layout:fragment="content">
+    <br>
+    <h1>Welcome to registration page</h1><br>
+    <h5 th:text="${result}"></h5><br>
+    <form action="/registersend" method="post" name="form">
+        <div class="form-group">
+            <label for="first name">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="first name" placeholder="">
+        </div>
+         <div class="form-group">
+        <label for="last name">First Name</label>
+        <input type="text" class="form-control" name="lastName" id="last name" placeholder="">
+        </div>
+        <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="userName" id="username" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" class="form-control" name="password" id="password" placeholder="6-20 Characters">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+        </div>
+        <br>
+        <select class="form-select" type="text" name="role"  id="role" placeholder="">
+            <option value="" selected>Select Role</option>
+            <option value="USER">USER</option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-secondary" th:onclick="return required()">Register</button>
+    </form>
+</section>
+</body>
+</html>

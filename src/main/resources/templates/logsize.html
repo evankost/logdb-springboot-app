@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>LogsSize</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 style="padding:5px">Select Max Size of Access Logs</h2>
+    <form action="/sizedlogs" method="post">
+        <div class="form-group">
+            <label>Max Size</label>
+            <input type="number" name="size" class="form-control" id="size" placeholder="size">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+</section>
+</body>
+</html>

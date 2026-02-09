@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymleaf.org" >
+<head>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/home">LOGDB</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto py-3 pill-nav">
+                    <li class="nav-item">
+                        <a class="nav-link px-4" href="/findbyip">Find Logs</a>
+                    </li>
+                    <li class="nav-item dropdown px-4">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Insert Logs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/inserthdfslog">Insert HDFS Logs</a></li>
+                            <li><a class="dropdown-item" href="/insertweblog">Insert Access Logs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-4" href="/modifylog">Modify Logs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-4" href="/deletelog">Delete Logs</a>
+                    </li>
+                    <li class="nav-item dropdown px-4">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Searches
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/logspertype">Search Logs Per Type</a></li>
+                            <li><a class="dropdown-item" href="/logsperday">Search Logs per Day</a></li>
+                            <li><a class="dropdown-item" href="/commonlog">Search Most Commom Log </a></li>
+                            <li><a class="dropdown-item" href="/topblocks">Search Top 5 BlockIds</a></li>
+                            <li><a class="dropdown-item" href="/referers">Search Referers</a></li>
+                            <li><a class="dropdown-item" href="/commonresource">Search Most Common Resource</a></li>
+                            <li><a class="dropdown-item" href="/logsize">Search Log by Max Size</a></li>
+                            <li><a class="dropdown-item" href="/dayreplicatedserved">Search Day Replicated-Served</a></li>
+                            <li><a class="dropdown-item" href="/hourreplicatedserved">Search Hour Replicated-Served</a></li>
+                            <li><a class="dropdown-item" href="/firefoxversion">Search by Firefox Version</a></li>
+                            <li><a class="dropdown-item" href="/searchonehttp">Search one specific HTTP Method</a></li>
+                            <li><a class="dropdown-item" href="/searchtwohttp">Search two distinct HTTP Methods</a></li>
+                            <li><a class="dropdown-item" href="/searchfourhttp">Search any four HTTP Methods</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mx-right">
+                    <li class="nav-item dropdown px-4">
+                        <a class="nav-link user-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong th:text="${username}"></strong>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/logout-action">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

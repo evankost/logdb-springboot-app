@@ -1,0 +1,34 @@
+<html>
+<html lang="en" xmlns:th="https://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="~{fragments/layouts/base_layout}">
+<head>
+    <title>UserInfo</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2>User Deatils</h2>
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">surname</th>
+            <th scope="col">email</th>
+            <th scope="col">role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${user.user_id}"/>
+            <td th:text="${user.first_name}"/>
+            <td th:text="${user.last_name}"/>
+            <td th:text="${user.mail}"/>
+            <td th:text="${user.role}"/>
+        </tr>
+
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

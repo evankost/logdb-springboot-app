@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymleaf.org" >
+<head>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">LOGDB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto py-3 pill-nav">
+                <li class="nav-item">
+                    <a class="nav-link disabled px-4">Find Logs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled px-4">Insert Logs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled px-4" >Searches</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mx-right">
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="modal-title fs-5" id="exampleModalLabel"><h4>LogDB</h4><p>Login or register from here to access.</p></div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="main">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="login-form">
+                                            <form action="/authenticate/login" method="post">
+                                                <div class="form-group">
+                                                    <label>User Name</label>
+                                                    <input type="text" name="username" class="form-control" placeholder="User Name">
+                                                    </div>
+                                                        <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input type="password" name="password" class="form-control" placeholder="Password">
+                                                    </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-secondary">Login</button>
+                                                    <button type="button" class="btn btn-link" onclick="location.href = '/register'">Register</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
